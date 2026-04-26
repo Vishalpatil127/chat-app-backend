@@ -9,14 +9,27 @@
 </head>
 <body>
     <h3>All Chats </h3>
+    <form method="get" action="/chats/new">
+        <button>new chat</button>
+    </form>
+    <br>
+    
    <% for(let chat of chats){ %>
    <div class="Chat">
         <p>From:<%= chat.from %></p>
         <div class="msg">
            <p>msg:<%= chat.msg %></p>
+           <form method="get" action="/chats/<%= chat._id %>/edit">
+           <button>edit</button>
+           </form>
         </div>
           <p>to:<%= chat.to %></p>
           <hr>
+          <p>TIme:<%=chat.created_at.toString().split(" ")[4] %></p>
+          <p>Date:<%=chat.created_at.toString().split(" ").slice(0,4).join(" ")%></p>
+
+          
+          
     </div>
 <% }%>
 </body>
